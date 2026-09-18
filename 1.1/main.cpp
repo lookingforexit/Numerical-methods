@@ -69,20 +69,6 @@ double calcDeterminant(const Matrix& matrix) {
     return determinant;
 }
 
-bool validateMatrix(const Matrix& matrix) {
-    for (size_t i = 0; i < matrix.size(); ++i) {
-        if (matrix[i].size() != matrix[0].size()) {
-            return false;
-        }
-    }
-
-    if (matrix.size() + 1 != matrix[0].size()) {
-        return false;
-    }
-
-    return true;
-}
-
 Matrix multiplyMatrices(const Matrix& lhs, const Matrix& rhs) {
     size_t rowsA = lhs.size();
     size_t colsA = lhs[0].size();
