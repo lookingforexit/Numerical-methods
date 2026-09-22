@@ -101,7 +101,22 @@ Matrix solveGauss(Matrix A, Matrix b) {
     return x;
 }
 
+double getQ(const Matrix& A) {
+    double q = 0;
+    for (size_t i = 0; i < A.size(); ++i) {
+        double rowSum = 0;
+        for (size_t j = 0; j < A.size(); ++j) {
+            if (i != j) {
+                rowSum += std::abs(A[i][j] / A[i][i]);
+            }
+        }
+        q = std::max(q, rowSum);
+    }
+    return q;
+}
+
 std::pair<Matrix, size_t> solveIteration(const Matrix& A, const Matrix& b, double eps) {
+    double q = getQ(A);
     Matrix x(A.size(), std::vector<double>(1, 0));
     Matrix xNew(A.size(), std::vector<double>(1, 0));
     size_t iterations = 0;
@@ -123,7 +138,7 @@ std::pair<Matrix, size_t> solveIteration(const Matrix& A, const Matrix& b, doubl
             maxDiff = std::max(maxDiff, std::abs(xNew[i][0] - x[i][0]));
         }
 
-        if (maxDiff < eps) {
+        if (q < 1 && q / (1 - q) * maxDiff <= eps) {
             break;
         }
         x = xNew;
@@ -133,6 +148,7 @@ std::pair<Matrix, size_t> solveIteration(const Matrix& A, const Matrix& b, doubl
 }
 
 std::pair<Matrix, size_t> solveSeidel(const Matrix& A, const Matrix& b, double eps) {
+    double q = getQ(A);
     Matrix x(A.size(), std::vector<double>(1, 0));
     Matrix xPrev(A.size(), std::vector<double>(1, 0));
     size_t iterations = 0;
@@ -156,7 +172,7 @@ std::pair<Matrix, size_t> solveSeidel(const Matrix& A, const Matrix& b, double e
             maxDiff = std::max(maxDiff, std::abs(x[i][0] - xPrev[i][0]));
         }
 
-        if (maxDiff < eps) {
+        if (q < 1 && q / (1 - q) * maxDiff <= eps) {
             break;
         }
     }
