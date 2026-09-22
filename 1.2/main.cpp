@@ -99,8 +99,8 @@ int main(int argc, char* argv[]) {
     std::cout << std::endl;
 
     std::cout << "2. Solution of SLAE:" << std::endl;
-    for (size_t i = 0; i < x.size(); ++i) {
-        std::cout << std::fixed << std::setprecision(6) << x[i] << std::endl;
+    for (double i : x) {
+        std::cout << std::fixed << std::setprecision(6) << i << std::endl;
     }
 
     return 0;

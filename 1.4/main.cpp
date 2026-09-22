@@ -80,8 +80,7 @@ Matrix RotationMatrix(const Matrix& matrix, size_t i, size_t j) {
     double phi = 0;
 
     if (std::abs(matrix[i][i] - matrix[j][j]) < std::numeric_limits<double>::epsilon()) {
-        constexpr double kPi = 3.141592;
-        phi = kPi / 4;
+        phi = std::numbers::pi / 4;
     } else {
         phi = 0.5 * std::atan(2 * matrix[i][j] / (matrix[i][i] - matrix[j][j]));
     }

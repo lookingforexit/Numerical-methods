@@ -198,9 +198,6 @@ int main(int argc, char* argv[]) {
     auto [xIter, itersIter] = solveIteration(ASym, bSym, eps);
     auto [xSeidel, itersSeidel] = solveSeidel(ASym, bSym, eps);
 
-    size_t nIterTheory = 0.2 * n * n * std::log(1.0 / eps);
-    size_t nSeidelTheory = 0.1 * n * n * std::log(1.0 / eps);
-
     std::cout << std::fixed << std::setprecision(6);
     std::cout << "1. Epsilon:" << std::endl;
     std::cout << eps << std::endl;
@@ -215,10 +212,8 @@ int main(int argc, char* argv[]) {
     printMatrix(xSeidel);
 
     std::cout << "4. Amount of iterations: " << std::endl;
-    std::cout << "Iteration method: " << itersIter
-              << " (Theory: ~" << nIterTheory << ")" << std::endl;
-    std::cout << "Seidel method: " << itersSeidel
-              << " (Theory: ~" << nSeidelTheory << ")" << std::endl;
+    std::cout << "Iteration method: " << itersIter << std::endl;
+    std::cout << "Seidel method: " << itersSeidel << std::endl;
 
     std::cout << "5. Comparing methods: " << std::endl;
     if (itersSeidel < itersIter) {
