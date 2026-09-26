@@ -2,3 +2,6 @@
 *.txt
 !**/CMakeLists.txt
 *.pdf
+venv
+*.doc
+*.png
