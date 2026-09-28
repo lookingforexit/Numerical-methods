@@ -71,7 +71,7 @@ def print_errors(title: str, errors: list[float]) -> None:
     print(title)
     print("k    error")
     for k, error in enumerate(errors, start=1):
-        print(f"{k:<4} {error:.10f}")
+        print(f"{k:<4} {error:.6f}")
     print()
 
 
