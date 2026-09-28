@@ -52,7 +52,7 @@ def main():
     print("4^x - 5x - 2 = 0")
     eps = read_eps()
 
-    x0 = 1.65
+    x0 = 1.68
     print("phi(x) = log_4(5x + 2)")
     print(f"|phi'(x0)| = {abs(dphi(x0)):.6f} < 1\n")
 

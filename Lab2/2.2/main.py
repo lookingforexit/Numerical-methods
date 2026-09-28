@@ -87,8 +87,8 @@ def main():
     print("3y - e^x = 0")
     eps = read_eps()
 
-    x0 = 0.30
-    y0 = 0.45
+    x0 = 0.33
+    y0 = 0.47
     print("\ninitial approximation:")
     print(f"x0 = {x0:.6f}, y0 = {y0:.6f}")
     print("phi1(y) = cos(y) / 3")
